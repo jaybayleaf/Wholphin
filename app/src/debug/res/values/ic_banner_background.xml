@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Debug builds get a red banner background so the "Wholphin (Debug)" app
+         is easy to tell apart from the stable app on the device launcher. -->
+    <color name="ic_banner_background">#5D1010</color>
+</resources>
