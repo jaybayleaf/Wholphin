@@ -97,10 +97,58 @@ class TrailerService
                     }
 
                     is RemoteTrailer -> {
-                        val intent = Intent(Intent.ACTION_VIEW, trailer.url.toUri())
-                        context.startActivity(intent)
+                        val youTubeId = youTubeVideoId(trailer.url)
+                        if (youTubeId != null) {
+                            navigateTo.invoke(
+                                Destination.YouTubeTrailer(
+                                    videoId = youTubeId,
+                                    title = trailer.name,
+                                ),
+                            )
+                        } else {
+                            val intent = Intent(Intent.ACTION_VIEW, trailer.url.toUri())
+                            context.startActivity(intent)
+                        }
                     }
                 }
+            }
+
+            /**
+             * Extract the video id from a YouTube URL, or return null if [url] is not a recognized YouTube link.
+             *
+             * Handles the common forms:
+             *  - https://www.youtube.com/watch?v=ID
+             *  - https://youtu.be/ID
+             *  - https://www.youtube.com/embed/ID
+             *  - https://www.youtube.com/v/ID
+             *  - https://www.youtube.com/shorts/ID
+             */
+            fun youTubeVideoId(url: String): String? {
+                val uri =
+                    try {
+                        url.toUri()
+                    } catch (_: Exception) {
+                        return null
+                    }
+                val host = uri.host?.removePrefix("www.")?.lowercase() ?: return null
+                val id =
+                    when (host) {
+                        "youtu.be" -> {
+                            uri.pathSegments.firstOrNull()
+                        }
+
+                        "youtube.com", "m.youtube.com", "youtube-nocookie.com" -> {
+                            uri.getQueryParameter("v")
+                                ?: uri.pathSegments
+                                    .takeIf { it.size >= 2 && it[0] in setOf("embed", "v", "shorts") }
+                                    ?.get(1)
+                        }
+
+                        else -> {
+                            null
+                        }
+                    }
+                return id?.takeIf { it.matches(Regex("[A-Za-z0-9_-]{11}")) }
             }
         }
     }

@@ -88,6 +88,11 @@
     <string name="play_count">Play Count</string>
     <string name="play_from_here">Play from here</string>
     <string name="play">Play</string>
+    <string name="pause">Pause</string>
+    <string name="rewind">Rewind</string>
+    <string name="fast_forward">Fast forward</string>
+    <string name="captions">Captions</string>
+    <string name="trailer_captions">Show captions on trailers</string>
     <string name="playback_debug_info">Show playback debug info</string>
     <string name="playback_speed">Playback Speed</string>
     <string name="playback">Playback</string>

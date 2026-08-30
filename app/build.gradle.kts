@@ -354,6 +354,7 @@ dependencies {
     implementation(libs.multiplatform.markdown.renderer)
     implementation(libs.multiplatform.markdown.renderer.m3)
     implementation(libs.programguide)
+    implementation(libs.android.youtube.player)
     implementation(libs.acra.http)
     implementation(libs.acra.dialog)
     implementation(libs.acra.limiter)

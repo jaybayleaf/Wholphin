@@ -88,6 +88,7 @@ message PlaybackPreferences {
   string external_player = 24;
   bool cinema_mode = 25;
   DpadSeekMode dpad_seek_mode = 26;
+  bool trailer_captions = 27;
 }
 
 enum DpadSeekMode {

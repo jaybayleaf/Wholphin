@@ -833,6 +833,18 @@ sealed interface AppPreference<Pref, T> {
                 summaryOff = R.string.disabled,
             )
 
+        val TrailerCaptions =
+            AppSwitchPreference<AppPreferences>(
+                title = R.string.trailer_captions,
+                defaultValue = false,
+                getter = { it.playbackPreferences.trailerCaptions },
+                setter = { prefs, value ->
+                    prefs.updatePlaybackPreferences { trailerCaptions = value }
+                },
+                summaryOn = R.string.enabled,
+                summaryOff = R.string.disabled,
+            )
+
         val SubtitleStyle =
             AppDestinationPreference<AppPreferences>(
                 title = R.string.subtitle_style,
@@ -1239,6 +1251,7 @@ val advancedPreferences =
                         AppPreference.OneClickPause,
                         AppPreference.ControllerTimeout,
                         AppPreference.CinemaMode,
+                        AppPreference.TrailerCaptions,
                         AppPreference.GlobalContentScale,
                         AppPreference.SkipSegments,
                         AppPreference.DpadSeekModePref,

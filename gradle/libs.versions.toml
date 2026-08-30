@@ -50,6 +50,7 @@ junit = "4.13.2"
 junitVersion = "1.3.0"
 espressoCore = "3.7.0"
 material = "1.14.0"
+androidYoutubePlayer = "13.0.0"
 
 compileSdk = "37"
 targetSdk = "37"
@@ -146,6 +147,7 @@ androidx-core-testing = { module = "androidx.arch.core:core-testing", version.re
 androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 
 ass-media = { group = "io.github.peerless2012", name = "ass-media", version.ref = "libass-android" }
+android-youtube-player = { module = "com.pierfrancescosoffritti.androidyoutubeplayer:core", version.ref = "androidYoutubePlayer" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

@@ -161,6 +161,15 @@ sealed class Destination(
         val titleOverride: StringProvider? = null,
     ) : Destination(false)
 
+    /**
+     * Plays a remote (e.g. YouTube) trailer inside the app instead of handing off to an external app
+     */
+    @Serializable
+    data class YouTubeTrailer(
+        val videoId: String,
+        val title: String? = null,
+    ) : Destination(true)
+
     @Serializable
     data object NowPlaying : Destination(true)
 
