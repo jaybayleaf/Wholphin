@@ -280,8 +280,7 @@ fun MovieDetails(
 
 private const val HEADER_ROW = 0
 private const val PEOPLE_ROW = HEADER_ROW + 1
-private const val TRAILER_ROW = PEOPLE_ROW + 1
-private const val CHAPTER_ROW = TRAILER_ROW + 1
+private const val CHAPTER_ROW = PEOPLE_ROW + 1
 private const val EXTRAS_ROW = CHAPTER_ROW + 1
 private const val SIMILAR_ROW = EXTRAS_ROW + 1
 private const val DISCOVER_ROW = SIMILAR_ROW + 1
@@ -366,7 +365,9 @@ fun MovieDetailsContent(
                         },
                         trailers = state.trailers,
                         trailerOnClick = {
-                            position = TRAILER_ROW
+                            // Keep focus on the button row so it returns to the trailer button
+                            // (via focusRestorer) when the trailer player closes.
+                            position = HEADER_ROW
                             trailerOnClick.invoke(it)
                         },
                         canDelete = canDelete,

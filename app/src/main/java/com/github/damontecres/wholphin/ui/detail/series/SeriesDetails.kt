@@ -457,7 +457,12 @@ fun SeriesDetailsContent(
                         )
                         TrailerButton(
                             trailers = trailers,
-                            trailerOnClick = trailerOnClick,
+                            trailerOnClick = {
+                                // Keep focus on the button row so it returns here when
+                                // the trailer player closes.
+                                position = HEADER_ROW
+                                trailerOnClick.invoke(it)
+                            },
                             modifier =
                                 Modifier.onFocusChanged {
                                     if (it.isFocused) {
